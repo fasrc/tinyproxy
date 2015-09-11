@@ -1,0 +1,26 @@
+# MANAGED BY PUPPET
+# see docs here: https://banu.com/tinyproxy
+User <%= @user %>
+Group <%= @group %>
+Port <%= @port %>
+Timeout <%= @timeout %>
+DefaultErrorFile "<%= @errorfile %>"
+StatFile "<%= @statfile %>"
+Syslog <%= @syslog %>
+LogLevel <%= @syslog_level %>
+PidFile "<%= @pidfile %>"
+MaxClients <%= @max_clients %>
+MinSpareServers <%= @min_spares %>
+MaxSpareServers <%= @max_spares %>
+StartServers <%= @servers %>
+MaxRequestsPerChild <%= @max_requests %>
+ViaProxyName "<%= @via_proxy_name %>"
+<% @connect_ports.each do |port| -%>
+ConnectPort <%= port %>
+<% end -%>
+<% if @config_hash != '' -%>
+<% @config_hash.each do |key,val| -%>
+<%= key %> <%= val %>
+<% end -%>
+<% end -%>
+
